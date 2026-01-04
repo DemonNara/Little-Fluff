@@ -10,17 +10,23 @@ import logging
 import shutil
 import firebase_admin
 from firebase_admin import credentials, db
+import os
+from dotenv import load_dotenv
 from events import Events
 from fun import Fun
 from admin import Admin
 from tasks import reminder_loop
 
-with open("config.json") as f:
-    config = json.load(f)
+load_dotenv()
 
-cred = credentials.Certificate(config["firebase_credentials"])
+token = os.getenv('DISCORD_TOKEN')
+firebase_creds_path = os.getenv('FIREBASE_CREDENTIALS')
+database_url = os.getenv('DATABASE_URL')
+prefix = os.getenv('PREFIX', '!')
+
+cred = credentials.Certificate(firebase_creds_path)
 firebase_admin.initialize_app(cred, {
-    'databaseURL': config["databaseURL"]
+    'databaseURL': database_url
 })
 
 ref = db.reference()
@@ -33,7 +39,7 @@ intents.message_content = True
 intents.members = True
 
 bot = commands.Bot(
-    command_prefix=config["prefix"],
+    command_prefix=prefix,
     intents=intents
 )
 
@@ -875,7 +881,7 @@ async def restore_db(ctx, backup_file: str):
     except Exception as e:
         await ctx.send(f"Error restoring database: {e}")
 
-bot.run(config['token'])
+bot.run(token)
 
 
 
