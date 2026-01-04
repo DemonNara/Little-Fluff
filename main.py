@@ -1,13 +1,32 @@
 import json
 import discord
 from discord.ext import commands
-from cogs.events import Events
-from cogs.fun import Fun
-from cogs.admin import Admin
+import random
+import asyncio
+import aiohttp
+import aiofiles
+import time
+import logging
+import shutil
+import firebase_admin
+from firebase_admin import credentials, db
+from events import Events
+from fun import Fun
+from admin import Admin
 from tasks import reminder_loop
 
 with open("config.json") as f:
     config = json.load(f)
+
+cred = credentials.Certificate(config["firebase_credentials"])
+firebase_admin.initialize_app(cred, {
+    'databaseURL': config["databaseURL"]
+})
+
+ref = db.reference()
+
+alerts = []
+reminders = []
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -22,25 +41,14 @@ bot = commands.Bot(
 async def on_ready():
     print(f"Logged in as {bot.user}")
     reminder_loop.start(bot)
+    daily_quote.start()
+    check_alerts.start()
+    check_reminders.start()
+    await load_reminders()
 
 bot.add_cog(Events(bot))
 bot.add_cog(Fun(bot))
 bot.add_cog(Admin(bot))
-
-
-
-
-
-
-# Initialize the bot with intents
-intents = discord.Intents.default()
-intents.messages = True
-intents.guilds = True
-intents.voice_states = True
-intents.members = True
-intents.message_content = True
-
-bot = commands.Bot(command_prefix='!', intents=intents)
 
 
 #Welcome message Hello/Goodbye
@@ -62,10 +70,6 @@ goodbye_messages = [
     "So long, and thanks for all the fish memes! Don't worry, we'll still be here, drowning in them.",
     "Auf Wiedersehen! Remember, you're always welcome back... until we forget who you are and ban you by mistake."
 ]
-
-@bot.event
-async def on_ready():
-    print('Bot is ready.')
 
 @bot.event
 async def on_member_join(member):
@@ -274,11 +278,6 @@ async def fetch_daily_quote():
                 quote = data[0]
                 return f"{quote['q']} - {quote['a']}"
             return "No quote available today."
-
-@bot.event
-async def on_ready():
-    print(f'{bot.user} has connected to Discord!')
-    daily_quote.start()
 
 # Daily Quote Task
 @tasks.loop(hours=24)
@@ -727,10 +726,6 @@ logger.addHandler(handler)
 
 # Events
 @bot.event
-async def on_ready():
-    logger.info(f'Logged in as {bot.user.name}')
-
-@bot.event
 async def on_command(ctx):
     logger.info(f'Command "{ctx.message.content}" executed by {ctx.author} in {ctx.guild}.')
 
@@ -853,7 +848,7 @@ def run_bot():
     load_user_data()
     intents = discord.Intents.default()
     intents.messages = True
-
+#make new code and file for correct token access line
     bot = commands.Bot(command_prefix=config.get('prefix', '!'), intents=intents)
     bot.add_cog(MyBot(bot))
     bot.run(config.get('token'))  # Make sure the token is in your config.json
@@ -880,15 +875,7 @@ async def restore_db(ctx, backup_file: str):
     except Exception as e:
         await ctx.send(f"Error restoring database: {e}")
 
-    @client.event
-    async def on_ready():
-        print('Bot is online!')
-
-    @client.event
-    async def on_message(message):
-        await handle_message(message)
-
-    client.run(config['token'])
+bot.run(config['token'])
 
 
 
