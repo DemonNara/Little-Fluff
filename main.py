@@ -1,3 +1,32 @@
+import json
+import discord
+from discord.ext import commands
+from cogs.events import Events
+from cogs.fun import Fun
+from cogs.admin import Admin
+from tasks import reminder_loop
+
+with open("config.json") as f:
+    config = json.load(f)
+
+intents = discord.Intents.default()
+intents.message_content = True
+intents.members = True
+
+bot = commands.Bot(
+    command_prefix=config["prefix"],
+    intents=intents
+)
+
+@bot.event
+async def on_ready():
+    print(f"Logged in as {bot.user}")
+    reminder_loop.start(bot)
+
+bot.add_cog(Events(bot))
+bot.add_cog(Fun(bot))
+bot.add_cog(Admin(bot))
+
 
 
 
