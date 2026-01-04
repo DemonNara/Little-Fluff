@@ -1,14 +1,16 @@
 import firebase_admin
-from firebase_admin import credentials, db
+from firebase_admin import db
 
-cred = credentials.Certificate("firebase.json")
-firebase_admin.initialize_app(cred, {
-    "databaseURL": "https://YOUR_PROJECT.firebaseio.com"
-})
+ref = None
 
-ref = db.reference()
+def get_ref():
+    global ref
+    if ref is None:
+        ref = db.reference()
+    return ref
 
 def get_user(user_id):
+    ref = get_ref()
     user = ref.child("users").child(str(user_id)).get()
     if not user:
         user = {
@@ -21,4 +23,5 @@ def get_user(user_id):
     return user
 
 def save_user(user_id, data):
+    ref = get_ref()
     ref.child("users").child(str(user_id)).update(data)

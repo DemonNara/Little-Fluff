@@ -20,11 +20,11 @@ from tasks import reminder_loop
 load_dotenv()
 
 token = os.getenv('DISCORD_TOKEN')
-firebase_creds_path = os.getenv('FIREBASE_CREDENTIALS')
+firebase_creds_json = os.getenv('FIREBASE_CREDENTIALS_JSON')
 database_url = os.getenv('DATABASE_URL')
 prefix = os.getenv('PREFIX', '!')
 
-cred = credentials.Certificate(firebase_creds_path)
+cred = credentials.Certificate(json.loads(firebase_creds_json))
 firebase_admin.initialize_app(cred, {
     'databaseURL': database_url
 })
