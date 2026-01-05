@@ -2,5 +2,5 @@
   "token": "YOUR_BOT_TOKEN_HERE",
   "prefix": "!",
   "firebase_credentials": "firebase_credentials.json",
-  "databaseURL": "https://discord-demon-30c74-default-rtdb.firebaseio.com/"
+  "databaseURL": "DatabaseURL"
 }
