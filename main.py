@@ -45,6 +45,13 @@ bot = commands.Bot(
 
 @bot.event
 async def on_ready():
+    await bot.tree.sync()
+    print("Slash commands synced")
+
+
+
+@bot.event
+async def on_ready():
     print(f"Logged in as {bot.user}")
     reminder_loop.start(bot)
     daily_quote.start()

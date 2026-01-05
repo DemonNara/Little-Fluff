@@ -22,6 +22,9 @@ class MyBot(commands.Bot):
         await self.load_extension("cogs.xp")
         await self.load_extension("cogs.admin")
         await self.load_extension("cogs.reaction_roles_slash")
+        await self.load_extension("cogs.admin_slash")
+        await self.load_extension("cogs.automod")
+        await bot.load_extension("cogs.automod_slash")
 
         # Sync slash commands globally
         await self.tree.sync()
