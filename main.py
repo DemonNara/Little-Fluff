@@ -886,5 +886,5 @@ bot.run(token)
 
 
 
-# cmd.die run = True #910
+# cmd.die run = True #889
  
