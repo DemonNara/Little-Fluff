@@ -27,7 +27,7 @@ def save_user(user_id, data):
     ref.child("users").child(str(user_id)).update(data)
 
 
-
+"""
     guilds/{guild_id}/automod/
   enabled: true
   max_messages: 5
@@ -58,3 +58,4 @@ warnings/{guild_id}_{user_id}/
   "warn_threshold": 3,
   "timeout_minutes": 10,
   "blacklist": ["badword", "slur"]
+"""
