@@ -1,6 +1,6 @@
 import json
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 import random
 import asyncio
 import aiohttp
@@ -12,6 +12,7 @@ import firebase_admin
 from firebase_admin import credentials, db
 import os
 from dotenv import load_dotenv
+from datetime import datetime, timedelta
 from events import Events
 from fun import Fun
 from admin import Admin
@@ -47,21 +48,15 @@ bot = commands.Bot(
 async def on_ready():
     await bot.tree.sync()
     print("Slash commands synced")
-
-
-
-@bot.event
-async def on_ready():
     print(f"Logged in as {bot.user}")
     reminder_loop.start(bot)
     daily_quote.start()
     check_alerts.start()
     check_reminders.start()
     await load_reminders()
-
-bot.add_cog(Events(bot))
-bot.add_cog(Fun(bot))
-bot.add_cog(Admin(bot))
+    await bot.add_cog(Events(bot))
+    await bot.add_cog(Fun(bot))
+    await bot.add_cog(Admin(bot))
 
 
 #Welcome message Hello/Goodbye

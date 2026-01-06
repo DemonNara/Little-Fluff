@@ -1,0 +1,1333 @@
+2026-01-06 15:06:22,592:INFO:discord.client: logging in using static token
+2026-01-06 15:06:25,090:INFO:discord.gateway: Shard ID None has connected to Gateway (Session ID: 674c9ac87cb970e6f18a4168bf9a6064).
+2026-01-06 15:06:30,039:ERROR:discord.ext.tasks: Unhandled exception in internal background task 'reminder_loop'.
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\tasks\__init__.py", line 246, in _loop
+    await self.coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\tasks.py", line 9, in reminder_loop
+    reminders = ref.child("reminders").get() or {}
+                ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:06:30,316:ERROR:discord.client: Ignoring exception in on_ready
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\main.py", line 58, in on_ready
+    await bot.add_cog(Fun(bot))
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\commands\bot.py", line 810, in add_cog
+    cog = await cog._inject(self, override=override, guild=guild, guilds=guilds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\commands\cog.py", line 727, in _inject
+    raise e
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\commands\cog.py", line 718, in _inject
+    bot.add_command(command)
+    ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\commands\bot.py", line 264, in add_command
+    super().add_command(command)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\ext\commands\core.py", line 1391, in add_command
+    raise CommandRegistrationError(command.name)
+discord.ext.commands.errors.CommandRegistrationError: The command work is already an existing command or alias.
+2026-01-06 15:10:11,513:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:10:37,932:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:10:37,971:INFO:discord: Command "!meme" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:11:31,119:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:11:44,082:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:11:44,125:INFO:discord: Command "!work" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:11:59,694:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:11:59,751:INFO:discord: Command "!balance" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:12:10,011:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:12:10,056:INFO:discord: Command "!flip a coin" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:12:20,852:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:12:20,948:INFO:discord: Command "!roll a dice" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:12:31,178:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:12:31,244:INFO:discord: Command "!8ball" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:12:38,910:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:12:58,929:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:13:04,532:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:13:04,595:INFO:discord: Command "!8ball" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:13:29,332:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:13:29,361:INFO:discord: Command "!8ball will i get an email today" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:14:00,618:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:14:00,638:INFO:discord: Command "!spank <@470826275255091200>" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:14:28,231:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:14:28,253:INFO:discord: Command "!hug <@470826275255091200>" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:14:40,622:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:14:40,694:INFO:discord: Command "!pat <@470826275255091200>" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:14:50,445:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:14:50,464:INFO:discord: Command "!pat <@1240718325642952715>" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:15:09,113:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:15:09,131:INFO:discord: Command "!cat" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:15:19,813:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:15:19,838:INFO:discord: Command "!dog" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:15:39,121:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:15:39,178:INFO:discord: Command "!insult <@1240718325642952715>" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:15:53,947:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:15:53,987:INFO:discord: Command "!joke" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:16:05,594:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:16:05,612:INFO:discord: Command "!reverse" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:16:20,498:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:16:20,516:INFO:discord: Command "!reverse i hug you" executed by bigfluffie in Fluffie Demon.
+2026-01-06 15:16:40,212:ERROR:discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\discord\client.py", line 504, in _run_event
+    await coro(*args, **kwargs)
+  File "C:\Users\bradl\Music\Little-Fluff\events.py", line 13, in on_message
+    leveled, level = add_xp(message.author.id)
+                     ~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\Music\Little-Fluff\leveling.py", line 8, in add_xp
+    user = get_user(user_id)
+  File "C:\Users\bradl\Music\Little-Fluff\firebase.py", line 14, in get_user
+    user = ref.child("users").child(str(user_id)).get()
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 220, in get
+    return self._client.body('get', self._add_suffix(), params=params)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 148, in body
+    resp = self.request(method, url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\db.py", line 928, in request
+    return super().request(method, url, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\firebase_admin\_http_client.py", line 135, in request
+    resp = self._session.request(method, self.base_url + url, **kwargs)
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\transport\requests.py", line 537, in request
+    self.credentials.before_request(auth_request, method, url, request_headers)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 228, in before_request
+    self._blocking_refresh(request)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 191, in _blocking_refresh
+    self.refresh(request)
+    ~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\auth\credentials.py", line 365, in refresh
+    self._refresh_token(request)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\service_account.py", line 457, in _refresh_token
+    access_token, expiry, _ = _client.jwt_grant(
+                              ~~~~~~~~~~~~~~~~~^
+        request, self._token_uri, assertion
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 299, in jwt_grant
+    response_data = _token_endpoint_request(
+        request,
+    ...<5 lines>...
+        },
+    )
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 270, in _token_endpoint_request
+    _handle_error_response(response_data, retryable_error)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bradl\AppData\Roaming\Python\Python314\site-packages\google\oauth2\_client.py", line 69, in _handle_error_response
+    raise exceptions.RefreshError(
+        error_details, response_data, retryable=retryable_error
+    )
+google.auth.exceptions.RefreshError: ('invalid_grant: Invalid JWT Signature.', {'error': 'invalid_grant', 'error_description': 'Invalid JWT Signature.'})
+2026-01-06 15:16:40,234:INFO:discord: Command "!polyjuice" executed by bigfluffie in Fluffie Demon.

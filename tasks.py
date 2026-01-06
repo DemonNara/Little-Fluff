@@ -1,10 +1,11 @@
 from discord.ext import tasks
 from datetime import datetime
-from firebase import ref
+from firebase import get_ref
 
 @tasks.loop(seconds=60)
 async def reminder_loop(bot):
     now = datetime.now().timestamp()
+    ref = get_ref()
     reminders = ref.child("reminders").get() or {}
 
     for key, reminder in reminders.items():
